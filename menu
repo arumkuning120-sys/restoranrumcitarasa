@@ -1,0 +1,28 @@
+package restoranrumcitarasa;
+
+public class menu {
+    // Atribut
+    private String nama;
+    private double harga;
+    private String kategori; // "Makanan" atau "Minuman"
+
+    // Konstruktor
+    public menu(String nama, double harga, String kategori) {
+        this.nama = nama;
+        this.harga = harga;
+        this.kategori = kategori;
+    }
+
+    // Getter Method
+    public String getNama() {
+        return nama;
+    }
+
+    public double getHarga() {
+        return harga;
+    }
+
+    public String getKategori() {
+        return kategori;
+    }
+}
