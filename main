@@ -1,0 +1,173 @@
+package restoranrumcitarasa;
+
+import java.util.Scanner;
+
+public class main {
+
+    // Array global untuk menyimpan daftar menu menggunakan kelas menu
+    static menu[] daftarMenu = {
+        new menu("Nasi Padang", 25000, "Makanan"),
+        new menu("Ayam Goreng", 20000, "Makanan"),
+        new menu("Mie Goreng", 15000, "Makanan"),
+        new menu("Soto Ayam", 18000, "Makanan"),
+        new menu("Es Teh Manis", 5000, "Minuman"),
+        new menu("Es Jeruk", 7000, "Minuman"),
+        new menu("Jus Alpukat", 12000, "Minuman"),
+        new menu("Kopi Hitam", 10000, "Minuman")
+    };
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // 1. Menampilkan Daftar Menu Restoran RUMCITARASA
+        tampilkanMenu();
+
+        System.out.println("\n--- FORM PEMESANAN (Maksimal 4 Item) ---");
+        System.out.println("Format input: NomorMenu = Jumlah (Contoh: 1 = 2)");
+        System.out.println("Ketik '0 = 0' jika tidak ada pesanan tambahan.");
+
+        // 2. Menerima Input Pesanan (tanpa loop)
+        System.out.print("Pesanan 1: ");
+        String input1 = scanner.nextLine();
+        
+        System.out.print("Pesanan 2: ");
+        String input2 = scanner.nextLine();
+
+        System.out.print("Pesanan 3: ");
+        String input3 = scanner.nextLine();
+
+        System.out.print("Pesanan 4: ");
+        String input4 = scanner.nextLine();
+
+        // 3. Memproses dan Mencetak Struk
+        prosesDanCetakStruk(input1, input2, input3, input4);
+
+        scanner.close();
+    }
+
+    // Method untuk menampilkan daftar menu
+    public static void tampilkanMenu() {
+        System.out.println("==========================================");
+        System.out.println("          RESTORAN RUMCITARASA            ");
+        System.out.println("==========================================");
+        
+        System.out.println("\n--- MAKANAN ---");
+        System.out.println("1. " + daftarMenu[0].getNama() + " \t- Rp " + (int)daftarMenu[0].getHarga());
+        System.out.println("2. " + daftarMenu[1].getNama() + " \t- Rp " + (int)daftarMenu[1].getHarga());
+        System.out.println("3. " + daftarMenu[2].getNama() + " \t- Rp " + (int)daftarMenu[2].getHarga());
+        System.out.println("4. " + daftarMenu[3].getNama() + " \t- Rp " + (int)daftarMenu[3].getHarga());
+
+        System.out.println("\n--- MINUMAN ---");
+        System.out.println("5. " + daftarMenu[4].getNama() + " \t- Rp " + (int)daftarMenu[4].getHarga());
+        System.out.println("6. " + daftarMenu[5].getNama() + " \t- Rp " + (int)daftarMenu[5].getHarga());
+        System.out.println("7. " + daftarMenu[6].getNama() + " \t- Rp " + (int)daftarMenu[6].getHarga());
+        System.out.println("8. " + daftarMenu[7].getNama() + " \t- Rp " + (int)daftarMenu[7].getHarga());
+        System.out.println("==========================================");
+    }
+
+    // Method untuk memproses pesanan dan menghitung total biaya
+    public static void prosesDanCetakStruk(String p1, String p2, String p3, String p4) {
+        double subtotal = 0;
+        String rincianStruk = "";
+
+        // Pengolahan Item 1
+        if (!p1.equals("0 = 0") && p1.contains("=")) {
+            String[] parts = p1.split("=");
+            int index = Integer.parseInt(parts[0].trim()) - 1;
+            int qty = Integer.parseInt(parts[1].trim());
+
+            if (index >= 0 && index < daftarMenu.length && qty > 0) {
+                double totalItem = daftarMenu[index].getHarga() * qty;
+                subtotal += totalItem;
+                rincianStruk += String.format("%-15s x%-3d @ Rp %-6d = Rp %d\n", 
+                    daftarMenu[index].getNama(), qty, (int)daftarMenu[index].getHarga(), (int)totalItem);
+            }
+        }
+
+        // Pengolahan Item 2
+        if (!p2.equals("0 = 0") && p2.contains("=")) {
+            String[] parts = p2.split("=");
+            int index = Integer.parseInt(parts[0].trim()) - 1;
+            int qty = Integer.parseInt(parts[1].trim());
+
+            if (index >= 0 && index < daftarMenu.length && qty > 0) {
+                double totalItem = daftarMenu[index].getHarga() * qty;
+                subtotal += totalItem;
+                rincianStruk += String.format("%-15s x%-3d @ Rp %-6d = Rp %d\n", 
+                    daftarMenu[index].getNama(), qty, (int)daftarMenu[index].getHarga(), (int)totalItem);
+            }
+        }
+
+        // Pengolahan Item 3
+        if (!p3.equals("0 = 0") && p3.contains("=")) {
+            String[] parts = p3.split("=");
+            int index = Integer.parseInt(parts[0].trim()) - 1;
+            int qty = Integer.parseInt(parts[1].trim());
+
+            if (index >= 0 && index < daftarMenu.length && qty > 0) {
+                double totalItem = daftarMenu[index].getHarga() * qty;
+                subtotal += totalItem;
+                rincianStruk += String.format("%-15s x%-3d @ Rp %-6d = Rp %d\n", 
+                    daftarMenu[index].getNama(), qty, (int)daftarMenu[index].getHarga(), (int)totalItem);
+            }
+        }
+
+        // Pengolahan Item 4
+        if (!p4.equals("0 = 0") && p4.contains("=")) {
+            String[] parts = p4.split("=");
+            int index = Integer.parseInt(parts[0].trim()) - 1;
+            int qty = Integer.parseInt(parts[1].trim());
+
+            if (index >= 0 && index < daftarMenu.length && qty > 0) {
+                double totalItem = daftarMenu[index].getHarga() * qty;
+                subtotal += totalItem;
+                rincianStruk += String.format("%-15s x%-3d @ Rp %-6d = Rp %d\n", 
+                    daftarMenu[index].getNama(), qty, (int)daftarMenu[index].getHarga(), (int)totalItem);
+            }
+        }
+
+        // --- PENERAPAN BIAYA TAMBAHAN DAN PROMO ---
+        double pajak = subtotal * 0.10;
+        double biayaPelayanan = 20000;
+        double totalSebelumDiskon = subtotal + pajak + biayaPelayanan;
+        
+        double diskon = 0;
+        boolean dapatBeliSatuGratisSatu = false;
+
+        // Evaluasi kondisi diskon & promo
+        if (totalSebelumDiskon > 100000) {
+            diskon = totalSebelumDiskon * 0.10;
+        }
+
+        if (totalSebelumDiskon > 50000) {
+            dapatBeliSatuGratisSatu = true;
+        }
+
+        double totalAkhir = totalSebelumDiskon - diskon;
+
+        // --- MENCETAK STRUK PESANAN RESTORAN RUMCITARASA ---
+        System.out.println("\n==========================================");
+        System.out.println("          STRUK PEMBAYARAN RUMCITARASA    ");
+        System.out.println("==========================================");
+        System.out.print(rincianStruk);
+        System.out.println("------------------------------------------");
+        System.out.println("Subtotal Pemesanan    : Rp " + (int)subtotal);
+        System.out.println("Pajak (10%)           : Rp " + (int)pajak);
+        System.out.println("Biaya Pelayanan       : Rp " + (int)biayaPelayanan);
+        System.out.println("Total Sebelum Diskon  : Rp " + (int)totalSebelumDiskon);
+        
+        if (diskon > 0) {
+            System.out.println("Diskon Promo (10%)    : -Rp " + (int)diskon);
+        } else {
+            System.out.println("Diskon Promo (10%)    : Rp 0");
+        }
+
+        if (dapatBeliSatuGratisSatu) {
+            System.out.println("Penawaran Khusus      : Promo Beli 1 Gratis 1 Minuman Terpakai!");
+        }
+
+        System.out.println("------------------------------------------");
+        System.out.println("TOTAL AKHIR BAYAR     : Rp " + (int)totalAkhir);
+        System.out.println("==========================================");
+    }
+}
